@@ -16,26 +16,16 @@ try:
     get_started_btn.click()
 
     while True:
-        answer_v1_q1 = browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-0"] [style="background-color: rgb(55, 65, 104);"]')
-        answer_v1_q1.click()
-        answer_v1_q2 = browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-1"] [style="background-color: rgb(124, 216, 242);"]')
-        answer_v1_q2.click()
-        answer_v1_q3 = browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-2"] [style="background-color: rgb(101, 157, 254);"]')
-        answer_v1_q3.click()
-        answer_v1_q4 = browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-3"] [style="background-color: rgb(101, 157, 254);"]')
-        answer_v1_q4.click()
-        answer_v1_q5 = browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-4"] [style="background-color: rgb(101, 157, 254);"]')
-        answer_v1_q5.click()
-        answer_v1_q6 = browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-5"] [style="background-color: rgb(101, 157, 254);"]')
-        answer_v1_q6.click()
-        answer_v1_q7 = browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-6"] [style="background-color: rgb(101, 157, 254);"]')
-        answer_v1_q7.click()
-        answer_v1_q8 = browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-7"] [style="background-color: rgb(101, 157, 254);"]')
-        answer_v1_q8.click()
-        answer_input_1 = browser.find_element(by=By.CSS_SELECTOR, value='[data-test="question-textarea-1"]')
-        answer_input_1.send_keys("Lorem Ipsum 1")
-        answer_input_2 = browser.find_element(by=By.CSS_SELECTOR, value='[data-test="question-textarea-2"]')
-        answer_input_2.send_keys("Lorem Ipsum 2")
+        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-0"] [style="background-color: rgb(55, 65, 104);"]').click()
+        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-1"] [style="background-color: rgb(124, 216, 242);"]').click()
+        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-2"] [style="background-color: rgb(101, 157, 254);"]').click()
+        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-3"] [style="background-color: rgb(101, 157, 254);"]').click()
+        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-4"] [style="background-color: rgb(101, 157, 254);"]').click()
+        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-5"] [style="background-color: rgb(101, 157, 254);"]').click()
+        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-6"] [style="background-color: rgb(101, 157, 254);"]').click()
+        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-7"] [style="background-color: rgb(101, 157, 254);"]').click()
+        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="question-textarea-1"]').send_keys("Lorem Ipsum 1")
+        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="question-textarea-2"]').send_keys("Lorem Ipsum 2")
 
         try:
             submit_btn = browser.find_element(by=By.CSS_SELECTOR, value='[data-test="button-confirm"]')
@@ -55,3 +45,20 @@ try:
 finally:
     time.sleep(5)
     browser.quit()
+
+# buttons
+
+# style="background-color: rgb(44, 42, 67);"
+# style="background-color: rgb(55, 65, 104);"
+
+# style="background-color: rgb(66, 87, 141);"
+# style="background-color: rgb(78, 111, 179);"
+
+# style="background-color: rgb(89, 133, 216);"
+# style="background-color: rgb(101, 157, 254);"
+
+# style="background-color: rgb(109, 177, 249);"
+# style="background-color: rgb(117, 196, 245);"
+
+# style="background-color: rgb(124, 216, 242);"
+# style="background-color: rgb(132, 235, 238);"

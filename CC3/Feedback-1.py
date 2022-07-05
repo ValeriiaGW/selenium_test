@@ -4,9 +4,9 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
 browser = webdriver.Chrome()
-
+link = "https://devs.culturalcalculator.co.uk/feedback-process/4deb3417-faae-40ff-b366-7cec4bc63a29"
 try:
-    browser.get("https://devs.culturalcalculator.co.uk/feedback-process/0b285210-4f39-4ec4-9119-c62de009c472")
+    browser.get(link)
     browser.implicitly_wait(1)
 
     check_box = browser.find_element(by=By.CSS_SELECTOR, value='[data-test="checkbox"]')
@@ -14,18 +14,57 @@ try:
 
     get_started_btn = browser.find_element(by=By.CSS_SELECTOR, value='[type="button"]')
     get_started_btn.click()
+    count = 1
+    text = {
+        'short': "lorem",
+        "long": "Lorem ipsum dolor sit amet, consecо" * 10
+    }
 
     while True:
-        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-0"] [style="background-color: rgb(55, 65, 104);"]').click()
-        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-1"] [style="background-color: rgb(124, 216, 242);"]').click()
-        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-2"] [style="background-color: rgb(101, 157, 254);"]').click()
-        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-3"] [style="background-color: rgb(101, 157, 254);"]').click()
-        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-4"] [style="background-color: rgb(101, 157, 254);"]').click()
-        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-5"] [style="background-color: rgb(101, 157, 254);"]').click()
-        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-6"] [style="background-color: rgb(101, 157, 254);"]').click()
-        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="qualities-evaluate-7"] [style="background-color: rgb(101, 157, 254);"]').click()
-        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="question-textarea-1"]').send_keys("Lorem Ipsum 1")
-        browser.find_element(by=By.CSS_SELECTOR, value='[data-test="question-textarea-2"]').send_keys("Lorem Ipsum 2")
+        browser.find_element(
+            by=By.CSS_SELECTOR,
+            value='[data-test="qualities-evaluate-0"] [style="background-color: rgb(66, 87, 141);"]')\
+            .click()
+        browser.find_element(
+            by=By.CSS_SELECTOR,
+            value='[data-test="qualities-evaluate-1"] [style="background-color: rgb(78, 111, 179);"]')\
+            .click()
+        browser.find_element(
+            by=By.CSS_SELECTOR,
+            value='[data-test="qualities-evaluate-2"] [style="background-color: rgb(124, 216, 242);"]')\
+            .click()
+        browser.find_element(
+            by=By.CSS_SELECTOR,
+            value='[data-test="qualities-evaluate-3"] [style="background-color: rgb(89, 133, 216);"]')\
+            .click()
+        browser.find_element(
+            by=By.CSS_SELECTOR,
+            value='[data-test="qualities-evaluate-4"] [style="background-color: rgb(117, 196, 245);"]')\
+            .click()
+        browser.find_element(
+            by=By.CSS_SELECTOR,
+            value='[data-test="qualities-evaluate-5"] [style="background-color: rgb(78, 111, 179);"]')\
+            .click()
+        browser.find_element(
+            by=By.CSS_SELECTOR,
+            value='[data-test="qualities-evaluate-6"] [style="background-color: rgb(124, 216, 242);"]')\
+            .click()
+        browser.find_element(
+            by=By.CSS_SELECTOR,
+            value='[data-test="qualities-evaluate-7"] [style="background-color: rgb(117, 196, 245);"]')\
+            .click()
+        browser.find_element(
+            by=By.CSS_SELECTOR,
+            value='[data-test="question-textarea-1"]')\
+            .send_keys(
+            text["short"] if count % 2 == 0 else text["long"])
+        browser.find_element(
+            by=By.CSS_SELECTOR,
+            value='[data-test="question-textarea-2"]')\
+            .send_keys(
+            text["short"] if count % 2 == 0 else text["long"]
+        )
+        count += 1
 
         try:
             submit_btn = browser.find_element(by=By.CSS_SELECTOR, value='[data-test="button-confirm"]')
@@ -48,17 +87,17 @@ finally:
 
 # buttons
 
-# style="background-color: rgb(44, 42, 67);"
-# style="background-color: rgb(55, 65, 104);"
+# 1 style="background-color: rgb(44, 42, 67);"
+# 2 style="background-color: rgb(55, 65, 104);"
 
-# style="background-color: rgb(66, 87, 141);"
-# style="background-color: rgb(78, 111, 179);"
+# 3 style="background-color: rgb(66, 87, 141);"
+# 4 style="background-color: rgb(78, 111, 179);"
 
-# style="background-color: rgb(89, 133, 216);"
-# style="background-color: rgb(101, 157, 254);"
+# 5 style="background-color: rgb(89, 133, 216);"
+# 6 style="background-color: rgb(101, 157, 254);"
 
-# style="background-color: rgb(109, 177, 249);"
-# style="background-color: rgb(117, 196, 245);"
+# 7 style="background-color: rgb(109, 177, 249);"
+# 8 style="background-color: rgb(117, 196, 245);"
 
-# style="background-color: rgb(124, 216, 242);"
-# style="background-color: rgb(132, 235, 238);"
+# 9 style="background-color: rgb(124, 216, 242);"
+# 10 style="background-color: rgb(132, 235, 238);"

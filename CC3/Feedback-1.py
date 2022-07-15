@@ -5,7 +5,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
 browser = webdriver.Chrome()
-link = "https://devs.culturalcalculator.co.uk/feedback-process/0fe2dfa7-4fae-4ba9-ba1a-b7ef07f5a50c"
+link = "https://devs.culturalcalculator.co.uk/feedback-process/831ba5b5-4c75-42a2-87b5-136aa662379d"
 try:
     browser.get(link)
     browser.implicitly_wait(1)
@@ -35,49 +35,50 @@ try:
 
     while True:
         try:
-            browser.find_element(
-                by=By.CSS_SELECTOR,
-                value=f'[data-test="qualities-evaluate-0"] [style="background-color: '
-                      f'rgb({random.choice(colour_list)});"]').click()
-            browser.find_element(
-                by=By.CSS_SELECTOR,
-                value=f'[data-test="qualities-evaluate-1"] [style="background-color: '
-                      f'rgb({random.choice(colour_list)});"]').click()
-            browser.find_element(
-                by=By.CSS_SELECTOR,
-                value=f'[data-test="qualities-evaluate-2"] [style="background-color: '
-                      f'rgb({random.choice(colour_list)});"]').click()
-            browser.find_element(
-                by=By.CSS_SELECTOR,
-                value=f'[data-test="qualities-evaluate-3"] [style="background-color: '
-                      f'rgb({random.choice(colour_list)});"]').click()
-            browser.find_element(
-                by=By.CSS_SELECTOR,
-                value=f'[data-test="qualities-evaluate-4"] [style="background-color: '
-                      f'rgb({random.choice(colour_list)});"]').click()
-            browser.find_element(
-                by=By.CSS_SELECTOR,
-                value=f'[data-test="qualities-evaluate-5"] [style="background-color: '
-                      f'rgb({random.choice(colour_list)});"]').click()
-            browser.find_element(
-                by=By.CSS_SELECTOR,
-                value=f'[data-test="qualities-evaluate-6"] [style="background-color: '
-                      f'rgb({random.choice(colour_list)});"]').click()
-            browser.find_element(
-                by=By.CSS_SELECTOR,
-                value=f'[data-test="qualities-evaluate-7"] [style="background-color: '
-                      f'rgb({random.choice(colour_list)});"]').click()
-            browser.find_element(
-                by=By.CSS_SELECTOR,
-                value='[data-test="question-textarea-1"]').send_keys(
-                text["short"] if count % 2 == 0 else text["long"]
-            )
-            browser.find_element(
-                by=By.CSS_SELECTOR,
-                value='[data-test="question-textarea-2"]').send_keys(
-                text["short"] if count % 2 == 0 else text["long"]
-            )
-            count += 1
+            for i in range(8):
+                browser.find_element(
+                    by=By.CSS_SELECTOR,
+                    value=f'[data-test="qualities-evaluate-{i}"] [style="background-color: '
+                          f'rgb({random.choice(colour_list)});"]').click()
+            # browser.find_element(
+            #     by=By.CSS_SELECTOR,
+            #     value=f'[data-test="qualities-evaluate-1"] [style="background-color: '
+            #           f'rgb({random.choice(colour_list)});"]').click()
+            # browser.find_element(
+            #     by=By.CSS_SELECTOR,
+            #     value=f'[data-test="qualities-evaluate-2"] [style="background-color: '
+            #           f'rgb({random.choice(colour_list)});"]').click()
+            # browser.find_element(
+            #     by=By.CSS_SELECTOR,
+            #     value=f'[data-test="qualities-evaluate-3"] [style="background-color: '
+            #           f'rgb({random.choice(colour_list)});"]').click()
+            # browser.find_element(
+            #     by=By.CSS_SELECTOR,
+            #     value=f'[data-test="qualities-evaluate-4"] [style="background-color: '
+            #           f'rgb({random.choice(colour_list)});"]').click()
+            # browser.find_element(
+            #     by=By.CSS_SELECTOR,
+            #     value=f'[data-test="qualities-evaluate-5"] [style="background-color: '
+            #           f'rgb({random.choice(colour_list)});"]').click()
+            # browser.find_element(
+            #     by=By.CSS_SELECTOR,
+            #     value=f'[data-test="qualities-evaluate-6"] [style="background-color: '
+            #           f'rgb({random.choice(colour_list)});"]').click()
+            # browser.find_element(
+            #     by=By.CSS_SELECTOR,
+            #     value=f'[data-test="qualities-evaluate-7"] [style="background-color: '
+            #           f'rgb({random.choice(colour_list)});"]').click()
+                browser.find_element(
+                    by=By.CSS_SELECTOR,
+                    value='[data-test="question-textarea-1"]').send_keys(
+                    text["short"] if count % 2 == 0 else text["long"]
+                )
+                browser.find_element(
+                    by=By.CSS_SELECTOR,
+                    value='[data-test="question-textarea-2"]').send_keys(
+                    text["short"] if count % 2 == 0 else text["long"]
+                )
+                count += 1
 
         except NoSuchElementException:
             continue

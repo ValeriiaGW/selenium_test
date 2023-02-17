@@ -70,13 +70,13 @@ def feedback_process(link):
     browser.quit()
     return finish_text
 
-
-class TestFeedbackProcess(unittest.TestCase):
-    def setUp(self) -> None:
-        self.link = "https://devs.culturalcalculator.co.uk/feedback-process/2ebfb840-886b-4f3b-8123-0ab1bb072364"
-
-    def tearDown(self) -> None:
-        pass
+#
+# class TestFeedbackProcess(unittest.TestCase):
+#     def setUp(self) -> None:
+#         self.link = "https://devs.culturalcalculator.co.uk/feedback-process/2ebfb840-886b-4f3b-8123-0ab1bb072364"
+#
+#     def tearDown(self) -> None:
+#         pass
 
     # def test_feedback_process(self):
     #     self.assertEqual(feedback_process(self.link), "We have now received your feedback.", "Feedback is not passed")
@@ -91,8 +91,8 @@ class TestFeedbackProcess(unittest.TestCase):
     #     self.assertEqual(2 - 2, 0)
 
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()
 
 # buttons
 

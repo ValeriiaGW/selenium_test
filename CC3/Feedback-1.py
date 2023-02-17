@@ -5,7 +5,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
 browser = webdriver.Chrome()
-link = "https://devs.culturalcalculator.co.uk/feedback-process/831ba5b5-4c75-42a2-87b5-136aa662379d"
+link = "https://devs.culturalcalculator.co.uk/feedback-process/ab9ad142-bd1a-4a0a-a629-d7855bac4c20"
 try:
     browser.get(link)
     browser.implicitly_wait(1)
@@ -21,16 +21,16 @@ try:
         "long": "Lorem ipsum dolor sit amet, consecо" * 10
     }
     colour_list = [
-        "44, 42, 67",
-        "55, 65, 104",
+        # "44, 42, 67",
+        # "55, 65, 104",
         "66, 87, 141",
         "78, 111, 179",
-        "89, 133, 216",
-        "101, 157, 254",
-        "109, 177, 249",
-        "117, 196, 245",
-        "124, 216, 242",
-        "132, 235, 238"
+        # "89, 133, 216",
+        # "101, 157, 254",
+        # "109, 177, 249",
+        # "117, 196, 245",
+        # "124, 216, 242",
+        # "132, 235, 238"
     ]
 
     while True:
@@ -76,7 +76,7 @@ try:
                 browser.find_element(
                     by=By.CSS_SELECTOR,
                     value='[data-test="question-textarea-2"]').send_keys(
-                    text["short"] if count % 2 == 0 else text["long"]
+                    text["long"] if count % 2 == 0 else text["short"]
                 )
                 count += 1
 

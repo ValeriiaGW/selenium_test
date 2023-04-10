@@ -5,7 +5,10 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
 browser = webdriver.Chrome()
-link = "https://devs.culturalcalculator.co.uk/feedback-process/adc95b31-e187-4fb2-9b6d-20a69614e8a4"
+link = "http://cultural-calculator-frontend-stage.s3-website.eu-west-2.amazonaws.com/feedback-process/aed1b208-bd96-46d8-8738-7da757fa7ac1"  #change
+role = "Self"                                                                                     #change
+round_number = 1                                                                                      #change
+res = []
 try:
     browser.get(link)
     browser.implicitly_wait(1)
@@ -16,10 +19,10 @@ try:
     get_started_btn = browser.find_element(by=By.CSS_SELECTOR, value='[type="button"]')
     get_started_btn.click()
     count = 1
-    text = {
-        'short': "lorem",
-        "long": "Lorem ipsum dolor sit amet, consecо" * 10
-    }
+    # text = {
+    #     'short': "lorem",
+    #     "long": "Lorem ipsum dolor sit amet, consecо" * 10
+    # }
     colour_list = [
         {
             'color': "44, 42, 67",
@@ -60,14 +63,13 @@ try:
         {
             "color": "132, 235, 238",
             "value": 10
-        },
+        }
 
     ]
-    res = []
     while True:
         try:
             colors = []
-            for i in range(3):
+            for i in range(8):
                 random_color = random.choice(colour_list)
                 browser.find_element(
                     by=By.CSS_SELECTOR,
@@ -78,13 +80,13 @@ try:
                     by=By.CSS_SELECTOR,
                     value='[data-test="question-textarea-1"]').send_keys(
                     # text["short"] if count % 2 == 0 else text["long"]
-                    "Question 1, supplier, round 1 "
+                    f'Question 1, {role}, round - {round_number} '
                 )
                 browser.find_element(
                     by=By.CSS_SELECTOR,
                     value='[data-test="question-textarea-2"]').send_keys(
                     # text["long"] if count % 2 == 0 else text["short"]
-                    "Question 2, supplier, round 1 "
+                    f'Question 2, {role}, round - {round_number} '
                 )
 
                 count += 1
@@ -106,9 +108,9 @@ try:
     for item in res:
         print(item)
 
-    with open("values.csv", "w") as file:
-        for item in res:
-            file.write(str(item) + "\n")
+    # with open("testrounds_reminder.csv", "a") as file:                                                     #file name
+    #     for item in res:
+    #         file.write(role + str(item) + "\n")
 
     confirm_btn = browser.find_element(by=By.CSS_SELECTOR, value='[data-test="button-confirm-send"]')
     confirm_btn.click()

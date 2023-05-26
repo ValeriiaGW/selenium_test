@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 import time
 
 browser = webdriver.Chrome()
-link = "https://devs.culturalcalculator.co.uk/cultural-project-process/f4a305f1-70d8-478b-a1f3-e79f3b2410ad/?project_id=ba1e49a2-dba0-4a71-a111-eb594c091faf"
+link = "https://devs.culturalcalculator.co.uk/cultural-project-process/af0aa332-6c7a-4975-bb37-c3ac8549f324/?project_id=d64e54e4-af1b-498b-8852-c70b7156c75d"
 
 r_buttons_group_1 = ["#radio-button-0 .styles_checkmark__2ORUe",
                      "#radio-button-1 .styles_checkmark__2ORUe",
@@ -15,6 +15,7 @@ r_buttons_group_1 = ["#radio-button-0 .styles_checkmark__2ORUe",
                      "#radio-button-5 .styles_checkmark__2ORUe",
                      "#radio-button-6 .styles_checkmark__2ORUe",
                      "#radio-button-7 .styles_checkmark__2ORUe",
+                     "#radio-button-8 .styles_checkmark__2ORUe",
                      "#radio-button-8 .styles_checkmark__2ORUe"]
 
 random_button_group_1 = random.choice(r_buttons_group_1)

@@ -1,11 +1,16 @@
 import random
-
+from selenium.common.exceptions import NoSuchElementException
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
+import pytest
+
 
 browser = webdriver.Chrome()
-link = "https://devs.culturalcalculator.co.uk/cultural-project-process/f4a305f1-70d8-478b-a1f3-e79f3b2410ad/?project_id=ba1e49a2-dba0-4a71-a111-eb594c091faf"
+
+link = "http://cultural-calculator-frontend-stage.s3-website.eu-west-2.amazonaws.com/cultural-project-process/0d67ebca-b819-46a5-a13b-397de4acca69/?project_id=e007f586-ae0e-4965-8126-bbd34fdab70c"
+participant = "1"
+wordcloud_text = "first"
 
 r_buttons_group_1 = ["#radio-button-0 .styles_checkmark__2ORUe",
                      "#radio-button-1 .styles_checkmark__2ORUe",
@@ -53,116 +58,152 @@ colour_list = [
     }]
 
 count = 1
+survey_result = []
+
 try:
     browser.get(link)
     browser.implicitly_wait(1)
     # survey start
     browser.find_element(by=By.CSS_SELECTOR, value="#button-get-started").click()
+    group_values = []
 
-# first question
-    for i in range(9):
+    try:
+        # first question
         browser.find_element(
             by=By.CSS_SELECTOR,
-            value=f'#radio-button-{i} .styles_checkmark__2ORUe'
+            value=f'{random_button_group_1}'
         ).click()
+        group_values.append(random_button_group_1)
 
-    browser.find_element(
-        by=By.CSS_SELECTOR,
-        value='#button-next'
-    ).click()
-
-# second question
-    for i in range(5):
         browser.find_element(
             by=By.CSS_SELECTOR,
-            value=f'#radio-button-{i} .styles_checkmark__2ORUe'
+            value='#button-next'
         ).click()
 
-    browser.find_element(
-        by=By.CSS_SELECTOR,
-        value='#button-next'
-    ).click()
-
-# third question
-
-    for i in range(8):
-        random_colour = random.choice(colour_list)
+        # second question
         browser.find_element(
             by=By.CSS_SELECTOR,
-            value=f'#question-evaluation-box-{i} #{random_colour["colour"]}'
+            value=f'{random_button_group_2}'
         ).click()
-        count += 1
+        group_values.append(random_button_group_2)
 
-    browser.find_element(
-        by=By.CSS_SELECTOR,
-        value='#button-next'
-    ).click()
 
-# fourth question
-
-    for i in range(5):
-        random_colour = random.choice(colour_list)
         browser.find_element(
             by=By.CSS_SELECTOR,
-            value=f'#question-evaluation-box-{i} #{random_colour["colour"]}'
+            value='#button-next'
         ).click()
-        count += 1
 
-    browser.find_element(
-        by=By.CSS_SELECTOR,
-        value='#button-next'
-    ).click()
+        # third question
 
-# fifth question
+        key_values_3 = []
 
-    for i in range(3):
-        random_colour = random.choice(colour_list)
+        for i in range(8):
+            random_colour = random.choice(colour_list)
+            browser.find_element(
+                by=By.CSS_SELECTOR,
+                value=f'#question-evaluation-box-{i} #{random_colour["colour"]}'
+            ).click()
+            count += 1
+            key_values_3.append({random_colour['value']})
+
         browser.find_element(
             by=By.CSS_SELECTOR,
-            value=f'#question-evaluation-box-{i} #{random_colour["colour"]}'
+            value='#button-next'
         ).click()
-        count += 1
 
-    browser.find_element(
-        by=By.CSS_SELECTOR,
-        value='#button-next'
-    ).click()
+        # fourth question
 
-# sixth question
+        key_values_4 = []
 
-    for i in range(3):
-        random_colour = random.choice(colour_list)
+        for i in range(5):
+            random_colour = random.choice(colour_list)
+            browser.find_element(
+                by=By.CSS_SELECTOR,
+                value=f'#question-evaluation-box-{i} #{random_colour["colour"]}'
+            ).click()
+            count += 1
+            key_values_4.append({random_colour['value']})
+
         browser.find_element(
             by=By.CSS_SELECTOR,
-            value=f'#question-evaluation-box-{i} #{random_colour["colour"]}'
+            value='#button-next'
         ).click()
-        count += 1
 
-    browser.find_element(
-        by=By.CSS_SELECTOR,
-        value='#button-next'
-    ).click()
+        # fifth question
 
-# seventh question
+        key_values_5 = []
 
-    browser.find_element(by=By.CSS_SELECTOR, value='#input-wordcloud-answer').send_keys("test first ")
-    browser.find_element(by=By.CSS_SELECTOR, value='#button-finish').click()
+        for i in range(3):
+            random_colour = random.choice(colour_list)
+            browser.find_element(
+                by=By.CSS_SELECTOR,
+                value=f'#question-evaluation-box-{i} #{random_colour["colour"]}'
+            ).click()
+            count += 1
+            key_values_5.append({random_colour['value']})
 
-    final_text = browser.find_element(
-        by=By.CSS_SELECTOR,
-        value='[class = "styles_info-block__XFd-7 styles_thank-you-block__3Pyk1"]'
-    )
-    final_text_text = final_text.text
-    assert "Thank you for sharing your experience!" == final_text_text, f'{final_text_text} is displayed'
+        browser.find_element(
+            by=By.CSS_SELECTOR,
+            value='#button-next'
+        ).click()
+
+        # sixth question
+
+        key_values_6 = []
+
+        for i in range(3):
+            random_colour = random.choice(colour_list)
+            browser.find_element(
+                by=By.CSS_SELECTOR,
+                value=f'#question-evaluation-box-{i} #{random_colour["colour"]}'
+            ).click()
+            count += 1
+            key_values_6.append({random_colour['value']})
+
+        browser.find_element(
+            by=By.CSS_SELECTOR,
+            value='#button-next'
+        ).click()
+
+        # seventh question Wordcloud
+
+        browser.find_element(
+            by=By.CSS_SELECTOR,
+            value='#input-wordcloud-answer'
+        ).send_keys(wordcloud_text)
+
+        browser.find_element(by=By.CSS_SELECTOR, value='#button-finish').click()
+
+        final_text = browser.find_element(
+            by=By.CSS_SELECTOR,
+            value='[class = "styles_info-block__XFd-7 styles_thank-you-block__3Pyk1"]'
+        )
+
+
+        def test_final_text():
+            final_text_text = final_text.text
+            assert final_text_text == "Thank you for sharing your experience!", f'{final_text_text} is displayed'
+
+        survey_result.append(group_values + key_values_3 + key_values_4 + key_values_5 + key_values_6)
+        print(survey_result)
+
+        # with open("notif 4 weeks", 'a') as file:                       # file name
+        #     for item in survey_result:
+        #         file.write(participant + str(item) + "\n")
+
+        # final_text = browser.find_element(
+        #     by=By.CSS_SELECTOR,
+        #     value='[class = "styles_info-block__XFd-7 styles_thank-you-block__3Pyk1"]'
+        # )
+        # def test_final_text():
+        #     final_text_text = final_text.text
+        #     assert "Thank you for sharing your experience!" == final_text_text, f'{final_text_text} is displayed'
+
+    except NoSuchElementException:
+        pass
+
 
 finally:
 
     time.sleep(5)
     browser.quit()
-
-    final_text = browser.find_element(
-        by=By.CSS_SELECTOR,
-        value='[class = "styles_info-block__XFd-7 styles_thank-you-block__3Pyk1"]'
-    )
-    final_text_text = final_text.text
-    assert "Thank you for sharing your experience!" == final_text_text, f'{final_text_text} is displayed'

@@ -13,7 +13,7 @@ browser = webdriver.Chrome()
 wait = WebDriverWait(browser, 10)
 
 try:
-    browser.get(Configuration.BASE_URL_DEV)
+    browser.get(Configuration.BASE_URL_PROD)
     browser.find_element(
         by=By.CSS_SELECTOR,
         value="#root > div > div > div > div > form > div.auth_form-group__UzVsX > div:nth-child(1) > div > input")\
@@ -36,7 +36,7 @@ try:
     #     by=By.CSS_SELECTOR,
     #     value="#root > div > div > div:nth-child(2) > div > div > div:nth-child(3) > form > div.styles_button-group__1pGSQ > button.button_button__14uPl.button_primary__1JMvQ.styles_button__23gPD.btn.btn-primary")\
     #     .click()
-    browser.find_element(by=By.XPATH, value="//div[contains(text(), 'test_org')]").click()
+    browser.find_element(by=By.XPATH, value="//div[contains(text(), 'test org')]").click()
 
 # Cultural project creation
 
@@ -45,7 +45,7 @@ try:
 # Project title
 
     browser.find_element(by=By.CSS_SELECTOR, value=".styles_title-input__3ad9E").send_keys(
-        "Test 1")
+        "ST Dashboard results test 1")
 
 # Frequency
 
@@ -384,25 +384,25 @@ try:
 
     wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "#input-cultural-pillar[value='']")))
     browser.find_element(by=By.CSS_SELECTOR, value="#input-cultural-pillar[value='']").send_keys(
-        "CULTURAL PILLAR 3/1")
+        "CULTURAL PILLAR 4/1")
     browser.find_element(by=By.CSS_SELECTOR, value="#input-survey-statement[value='']").send_keys(
-        "Statement 3/1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet leo non ante tincidunt blandijkbkj")
+        "Statement 4/1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet leo non ante tincidunt blandijkbkj")
 
     # Cultural pillar/Statement 2
 
     browser.find_element(by=By.CSS_SELECTOR, value="#button-add-survey-statement").click()
     browser.find_element(by=By.CSS_SELECTOR, value="#input-cultural-pillar[value='']").send_keys(
-        "CULTURAL PILLAR 3/2")
+        "CULTURAL PILLAR 4/2")
     browser.find_element(by=By.CSS_SELECTOR, value="#input-survey-statement[value='']").send_keys(
-        "Statement 3/2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet leo non ante tincidunt blandijkbkj")
+        "Statement 4/2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet leo non ante tincidunt blandijkbkj")
 
     # Cultural pillar/Statement 3
 
     browser.find_element(by=By.CSS_SELECTOR, value="#button-add-survey-statement").click()
     browser.find_element(by=By.CSS_SELECTOR, value="#input-cultural-pillar[value='']").send_keys(
-        "CULTURAL PILLAR 3/3")
+        "CULTURAL PILLAR 4/3")
     browser.find_element(by=By.CSS_SELECTOR, value="#input-survey-statement[value='']").send_keys(
-        "Statement 3/3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet leo non ante tincidunt blandijkbkj")
+        "Statement 4/3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet leo non ante tincidunt blandijkbkj")
 
     # save
 

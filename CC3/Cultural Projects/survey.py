@@ -8,9 +8,16 @@ import pytest
 
 browser = webdriver.Chrome()
 
-link = "http://cultural-calculator-frontend-stage.s3-website.eu-west-2.amazonaws.com/cultural-project-process/0d67ebca-b819-46a5-a13b-397de4acca69/?project_id=e007f586-ae0e-4965-8126-bbd34fdab70c"
-participant = "1"
-wordcloud_text = "first"
+stage = "stage.culturalcalculator.co.uk"
+dev = "devs.culturalcalculator.co.uk"
+
+participant_id = "9daba5e5-0bac-4e27-88e8-015b79cf86a8"
+
+# link = f"https://{dev}/cultural-project-process/{participant_id}"
+
+link = "https://culturalcalculator.co.uk/cultural-project-process/d46c5858-5961-4300-a903-2a2ecae1c3ca"
+
+wordcloud_text = "test "
 
 r_buttons_group_1 = ["#radio-button-0 .styles_checkmark__2ORUe",
                      "#radio-button-1 .styles_checkmark__2ORUe",
@@ -86,7 +93,6 @@ try:
             value=f'{random_button_group_2}'
         ).click()
         group_values.append(random_button_group_2)
-
 
         browser.find_element(
             by=By.CSS_SELECTOR,
@@ -174,18 +180,18 @@ try:
 
         browser.find_element(by=By.CSS_SELECTOR, value='#button-finish').click()
 
+        time.sleep(1)
+
         final_text = browser.find_element(
             by=By.CSS_SELECTOR,
             value='[class = "styles_info-block__XFd-7 styles_thank-you-block__3Pyk1"]'
-        )
+        ).text
 
 
         def test_final_text():
-            final_text_text = final_text.text
-            assert final_text_text == "Thank you for sharing your experience!", f'{final_text_text} is displayed'
+            assert final_text == "Thank you for sharing your experience!", f'{final_text} is displayed'
 
         survey_result.append(group_values + key_values_3 + key_values_4 + key_values_5 + key_values_6)
-        print(survey_result)
 
         # with open("notif 4 weeks", 'a') as file:                       # file name
         #     for item in survey_result:
@@ -195,15 +201,39 @@ try:
         #     by=By.CSS_SELECTOR,
         #     value='[class = "styles_info-block__XFd-7 styles_thank-you-block__3Pyk1"]'
         # )
-        # def test_final_text():
-        #     final_text_text = final_text.text
-        #     assert "Thank you for sharing your experience!" == final_text_text, f'{final_text_text} is displayed'
 
     except NoSuchElementException:
         pass
 
+except NoSuchElementException:
+    pass
 
 finally:
 
     time.sleep(5)
     browser.quit()
+
+# try:
+#     browser.get(link)
+#     browser.implicitly_wait(1)
+#     final_text_2 = browser.find_element(
+#         by=By.CSS_SELECTOR,
+#         value='.styles_info-block__XFd-7 > .styles_title__15uBx'
+#     ).text
+#
+#
+#     def test_second_attempt_to_pass_survey():
+#         assert final_text_2 == "Thanks for checking in but you have already submitted your survey for this round!", \
+#             f'{final_text_2} is displayed'
+#
+# except NoSuchElementException:
+#     pass
+#
+# finally:
+#     time.sleep(3)
+#     browser.quit()
+
+
+
+
+

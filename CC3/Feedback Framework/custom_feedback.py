@@ -2,12 +2,18 @@ import time
 import random
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
+
 from selenium.webdriver.common.by import By
 
 browser = webdriver.Chrome()
-link = "http://cultural-calculator-frontend-stage.s3-website.eu-west-2.amazonaws.com/feedback-process/aed1b208-bd96-46d8-8738-7da757fa7ac1"  #change
-role = "Self"                                                                                     #change
-round_number = 1                                                                                      #change
+wait = WebDriverWait(browser, 10)
+
+link = "https://devs.culturalcalculator.co.uk/feedback-process/53c5c006-7e45-42f5-b395-09bece6e2f62"  #change
+role = "nominee"                                                                                     #change
+round_number = 2                                                                                      #change
 res = []
 try:
     browser.get(link)
@@ -71,6 +77,7 @@ try:
             colors = []
             for i in range(8):
                 random_color = random.choice(colour_list)
+                browser.execute_script("window.scrollTo(0, 0);")
                 browser.find_element(
                     by=By.CSS_SELECTOR,
                     value=f'[data-test="qualities-evaluate-{i}"] [style="background-color: '
@@ -111,6 +118,8 @@ try:
     # with open("testrounds_reminder.csv", "a") as file:                                                     #file name
     #     for item in res:
     #         file.write(role + str(item) + "\n")
+
+    browser.execute_script("window.scrollTo(0, 0);")
 
     confirm_btn = browser.find_element(by=By.CSS_SELECTOR, value='[data-test="button-confirm-send"]')
     confirm_btn.click()
